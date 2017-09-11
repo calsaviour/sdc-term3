@@ -34,3 +34,13 @@ e.Define prototype trajectories for each cluster
 !(Define prototype model)(Define_Prototype_Clustering.png)
 
 At this point there is a model trajectory, the next step is to use this model on the road to actually generate predictions
+
+## Model Based Approaches
+![Model Based Approach](model_based_approach.png)
+For each dynamic object nearby
+a. Identify common driving behaviours(change lane, turn left, cross street and etc)
+b. Define process model for each behaviour. A mathematical model for description of object motion.
+   Incorporated some uncertainty in the process model.
+c. Update beliefs by comparing the observation with the output of the process model. Use the process model to compute the probability of each behaviour.Done by taking the observation at t-1 running the process models to compute the expected state of object at time t.
+d. Trajectory generation. Compare the observed state at time t with what the process models predicted. USe a multimodal estimation algorithm
+to derive the probability of each maneuver.
