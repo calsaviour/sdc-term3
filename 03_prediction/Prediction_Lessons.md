@@ -15,3 +15,11 @@ c. Model based : Process Models, Multi-modal estimators
 a. Intent Classification -> Trajectory Generation
 b. Naive Bayes
 
+
+
+## Model Based Approach (Self driving car at junction,
+car coming from the left)
+![Prediction Model](Prediction_Model.png)
+
+* Compare the model trajectory (expected trajectory)with the observed trajectory,
+  then assign a probability to each of the possible trajectory
