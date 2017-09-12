@@ -49,8 +49,8 @@ d. Trajectory generation. Compare the observed state at time t with what the pro
 ![Frenet Coordinates2](./images/frenet_coordinate2.png)
 
 ## Process Models
-![Example of Process Models](./images/process_models)
-![Mathematical Models](./images/mathematical_models)
+![Example of Process Models](./images/process_models.png)
+![Mathematical Models](./images/mathematical_models.png)
 Cons - Unable to predict the behaviour of other users
 
 
