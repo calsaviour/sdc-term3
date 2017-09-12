@@ -50,7 +50,8 @@ d. Trajectory generation. Compare the observed state at time t with what the pro
 
 ## Process Models
 ![Example of Process Models](./images/process_models)
-![Mathematical Models](./images/mathematical_models) Cons - Unable to predict the behaviour of other users
+![Mathematical Models](./images/mathematical_models)
+Cons - Unable to predict the behaviour of other users
 
 
 
