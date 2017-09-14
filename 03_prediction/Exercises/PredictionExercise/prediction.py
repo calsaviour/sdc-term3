@@ -1,18 +1,19 @@
-#!/usr/bin/env python
-
 from classifier import GNB
 import json
+import os
+
+directory = os.path.dirname(__file__)
 
 def main():
 	gnb = GNB()
-	with open('train.json', 'rb') as f:
+	with open(directory + '/train.json', 'rb') as f:
 		j = json.load(f)
 	print j.keys()
 	X = j['states']
 	Y = j['labels']
 	gnb.train(X, Y)
 
-	with open('test.json', 'rb') as f:
+	with open(directory + '/test.json', 'rb') as f:
 		j = json.load(f)
 
 	X = j['states']

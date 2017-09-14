@@ -1,6 +1,29 @@
+// Reference https://github.com/Microsoft/vscode-cpptools/blob/master/launch.md
 {
         "version": "0.2.0",
         "configurations": [
+            
+            {
+                "name": "Python",
+                "type": "python",
+                "request": "launch",
+                "stopOnEntry": true,
+                "osx": {
+                    "pythonPath": "/usr/bin/python2.6"
+                },
+                "windows": {
+                    
+                },
+                "program": "${file}",
+                "cwd": "${workspaceRoot}",
+                "env": {},
+                "envFile": "${workspaceRoot}/.env",
+                "debugOptions": [
+                    "WaitOnAbnormalExit",
+                    "WaitOnNormalExit",
+                    "RedirectOutput"
+                ]
+            },
             {
                 "name": "(lldb) Launch",
                 "type": "cppdbg",
@@ -14,4 +37,4 @@
                 "MIMode": "lldb"
             }
         ]
-    }
+}
