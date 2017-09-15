@@ -4,14 +4,24 @@
             {
                 "name": "(lldb) Launch",
                 "type": "cppdbg",
-                "request": "launch",
-                "program": "${workspaceRoot}/03_prediction/Exercises/nd013_pred_data/Debug/Classifier",
+                "request": "launch",                
                 "args": [],
                 "stopAtEntry": false,
                 "cwd": "${workspaceRoot}",
                 "environment": [],
                 "externalConsole": true,
-                "MIMode": "lldb"
+                "linux": {
+                    "MIMode": "gdb"
+                },
+                "osx": {
+                    "MIMode": "lldb"
+                },
+                "windows": {
+                    "MIMode": "gdb",
+                    "program": "${workspaceRoot}\\03_prediction\\Exercises\\nd013_pred_data\\Debug\\Classifier",
+                    "miDebuggerPath": "C:\\MinGW\\bin\\gdb.exe"
+                }
+                
             }
         ]
     }
