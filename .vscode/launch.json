@@ -37,7 +37,8 @@
                     "MIMode": "gdb"
                 },
                 "osx": {
-                    "MIMode": "lldb"
+                    "MIMode": "lldb",
+                    "program": "${workspaceRoot}/03_prediction/Exercises/nd013_pred_data/Debug/Classifier"
                 },
                 "windows": {
                     "MIMode": "gdb",
