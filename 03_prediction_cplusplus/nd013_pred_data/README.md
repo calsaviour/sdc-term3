@@ -4,6 +4,13 @@
 3. cmake .. && make
 
 
+## Steps to Debug
+1. mkdir Debug
+2. cd Debug
+3. cmake -DCMAKE_BUILD_TYPE=Debug ..
+4. make
+
+
 
 ## References
 1. http://www.suodenjoki.dk/us/archive/2016/vscode-cpp-mac.htm

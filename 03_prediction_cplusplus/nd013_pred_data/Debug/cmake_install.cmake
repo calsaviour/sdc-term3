@@ -1,4 +1,4 @@
-# Install script for directory: /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data
+# Install script for directory: /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -35,5 +35,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

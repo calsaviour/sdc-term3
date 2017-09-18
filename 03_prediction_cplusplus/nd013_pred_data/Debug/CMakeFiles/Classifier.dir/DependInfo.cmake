@@ -4,8 +4,8 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/classifier.cpp" "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug/CMakeFiles/Classifier.dir/src/classifier.cpp.o"
-  "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/main.cpp" "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug/CMakeFiles/Classifier.dir/src/main.cpp.o"
+  "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/classifier.cpp" "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug/CMakeFiles/Classifier.dir/src/classifier.cpp.o"
+  "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/main.cpp" "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug/CMakeFiles/Classifier.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "Clang")
 

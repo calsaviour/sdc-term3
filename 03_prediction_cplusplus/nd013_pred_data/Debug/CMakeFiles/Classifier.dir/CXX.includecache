@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/classifier.cpp
+/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/classifier.cpp
 iostream
 -
 sstream
@@ -18,9 +18,9 @@ math.h
 vector
 -
 classifier.h
-/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/classifier.h
+/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/classifier.h
 
-/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/classifier.h
+/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/classifier.h
 iostream
 -
 sstream
@@ -32,9 +32,9 @@ math.h
 vector
 -
 
-/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/main.cpp
+/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/main.cpp
 classifier.h
-/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/classifier.h
+/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/classifier.h
 iostream
 -
 fstream

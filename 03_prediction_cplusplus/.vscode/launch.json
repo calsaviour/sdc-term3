@@ -1,0 +1,19 @@
+// Reference https://github.com/Microsoft/vscode-cpptools/blob/master/launch.md
+{
+        "version": "0.2.0",
+        "configurations": [
+            
+            {
+                "name": "(lldb) Launch",
+                "type": "cppdbg",
+                "request": "launch",                
+                "program": "${workspaceRoot}/nd013_pred_data/Debug/Classifier",
+                "args": [],
+                "stopAtEntry": false,
+                "cwd": "${workspaceRoot}",
+                "environment": [],
+                "externalConsole": true,
+                "MIMode": "lldb"
+            }
+        ]
+}

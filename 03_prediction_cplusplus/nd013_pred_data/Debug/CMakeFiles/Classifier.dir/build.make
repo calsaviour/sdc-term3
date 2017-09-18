@@ -43,10 +43,10 @@ RM = /usr/local/Cellar/cmake/3.8.2/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data
+CMAKE_SOURCE_DIR = /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug
+CMAKE_BINARY_DIR = /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Classifier.dir/depend.make
@@ -59,16 +59,16 @@ include CMakeFiles/Classifier.dir/flags.make
 
 CMakeFiles/Classifier.dir/src/classifier.cpp.o: CMakeFiles/Classifier.dir/flags.make
 CMakeFiles/Classifier.dir/src/classifier.cpp.o: ../src/classifier.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Classifier.dir/src/classifier.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Classifier.dir/src/classifier.cpp.o -c /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/classifier.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Classifier.dir/src/classifier.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Classifier.dir/src/classifier.cpp.o -c /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/classifier.cpp
 
 CMakeFiles/Classifier.dir/src/classifier.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classifier.dir/src/classifier.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/classifier.cpp > CMakeFiles/Classifier.dir/src/classifier.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/classifier.cpp > CMakeFiles/Classifier.dir/src/classifier.cpp.i
 
 CMakeFiles/Classifier.dir/src/classifier.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classifier.dir/src/classifier.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/classifier.cpp -o CMakeFiles/Classifier.dir/src/classifier.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/classifier.cpp -o CMakeFiles/Classifier.dir/src/classifier.cpp.s
 
 CMakeFiles/Classifier.dir/src/classifier.cpp.o.requires:
 
@@ -83,16 +83,16 @@ CMakeFiles/Classifier.dir/src/classifier.cpp.o.provides.build: CMakeFiles/Classi
 
 CMakeFiles/Classifier.dir/src/main.cpp.o: CMakeFiles/Classifier.dir/flags.make
 CMakeFiles/Classifier.dir/src/main.cpp.o: ../src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Classifier.dir/src/main.cpp.o"
-	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Classifier.dir/src/main.cpp.o -c /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/Classifier.dir/src/main.cpp.o"
+	/Library/Developer/CommandLineTools/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/Classifier.dir/src/main.cpp.o -c /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/main.cpp
 
 CMakeFiles/Classifier.dir/src/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/Classifier.dir/src/main.cpp.i"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/main.cpp > CMakeFiles/Classifier.dir/src/main.cpp.i
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/main.cpp > CMakeFiles/Classifier.dir/src/main.cpp.i
 
 CMakeFiles/Classifier.dir/src/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/Classifier.dir/src/main.cpp.s"
-	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/src/main.cpp -o CMakeFiles/Classifier.dir/src/main.cpp.s
+	/Library/Developer/CommandLineTools/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/src/main.cpp -o CMakeFiles/Classifier.dir/src/main.cpp.s
 
 CMakeFiles/Classifier.dir/src/main.cpp.o.requires:
 
@@ -117,7 +117,7 @@ Classifier: CMakeFiles/Classifier.dir/src/classifier.cpp.o
 Classifier: CMakeFiles/Classifier.dir/src/main.cpp.o
 Classifier: CMakeFiles/Classifier.dir/build.make
 Classifier: CMakeFiles/Classifier.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Classifier"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable Classifier"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/Classifier.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -135,6 +135,6 @@ CMakeFiles/Classifier.dir/clean:
 .PHONY : CMakeFiles/Classifier.dir/clean
 
 CMakeFiles/Classifier.dir/depend:
-	cd /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction/Exercises/nd013_pred_data/Debug/CMakeFiles/Classifier.dir/DependInfo.cmake --color=$(COLOR)
+	cd /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug /Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/Debug/CMakeFiles/Classifier.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/Classifier.dir/depend
 
