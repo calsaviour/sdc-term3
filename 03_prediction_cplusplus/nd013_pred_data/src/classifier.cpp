@@ -3,6 +3,7 @@
 #include <fstream>
 #include <math.h>
 #include <vector>
+#include <map>
 #include "classifier.h"
 
 /**
@@ -33,6 +34,21 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
 		labels - array of N labels
 		  - Each label is one of "left", "keep", or "right".
 	*/
+	int num_vars = 4;
+
+	map<string, vector<vector<double> > > total_by_label;
+	total_by_label["left"] = vector<vector<double> > ();
+	total_by_label["keep"] = vector<vector<double> > ();
+	total_by_label["right"] = vector<vector<double> > ();
+
+	
+	for(vector<int>::size_type i = 0; i <possible_labels.size(); i++){
+		for(int j = 0; j < num_vars; j++) {
+			total_by_label[possible_labels[i]].push_back(vector<double>());
+		}
+	}
+
+	
 }
 
 string GNB::predict(vector<double> sample)

@@ -46,7 +46,7 @@ vector<string> Load_Label(string file_name)
 }
 
 int main() {
-    string path = "./03_prediction/Exercises/nd013_pred_data/data/";
+    string path = "/Users/calvinlow/Documents/GitHub/sdc-term3/03_prediction_cplusplus/nd013_pred_data/data/";
     vector< vector<double> > X_train = Load_State(path + "train_states.txt");
     vector< vector<double> > X_test  = Load_State(path + "test_states.txt");
     vector< string > Y_train  = Load_Label(path + "train_labels.txt");

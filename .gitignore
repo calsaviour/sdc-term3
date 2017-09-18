@@ -1,4 +1,4 @@
-**/Debug
-**/build
+[Dd]ebug/
+[Bb]uild/
 .DS_Store
 *.pyc
