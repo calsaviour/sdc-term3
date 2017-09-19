@@ -6,6 +6,8 @@
 #include <map>
 #include "classifier.h"
 
+using namespace std;
+
 /**
  * Initializes GNB
  */
@@ -17,7 +19,6 @@ GNB::~GNB() {}
 
 void GNB::train(vector<vector<double>> data, vector<string> labels)
 {
-
 	/*
 		Trains the classifier with N data points and labels.
 
@@ -34,21 +35,75 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
 		labels - array of N labels
 		  - Each label is one of "left", "keep", or "right".
 	*/
-	int num_vars = 4;
+	int feature_size = data[0].size();
 
-	map<string, vector<vector<double> > > total_by_label;
-	total_by_label["left"] = vector<vector<double> > ();
-	total_by_label["keep"] = vector<vector<double> > ();
-	total_by_label["right"] = vector<vector<double> > ();
+	unique_labels_ = labels;
+	vector<string>::iterator sit;
+	std::sort(unique_labels_.begin(), unique_labels_.end());
+	sit = std::unique(unique_labels_.begin(), unique_labels_.end());
+	unique_labels_.erase(sit, unique_labels_.end());
 
-	
-	for(vector<int>::size_type i = 0; i <possible_labels.size(); i++){
-		for(int j = 0; j < num_vars; j++) {
-			total_by_label[possible_labels[i]].push_back(vector<double>());
+	map<string, vector<vector<double> > > table_of_features;
+	for(auto label: unique_labels_) {
+		label_counts_[label] = 0;
+		vector<double> tmp(feature_size, 0.0);
+		means_.insert(std::pair<string, vector<double> >(label,tmp));
+		stds_.insert(std::pair<string, vector<double> >(label,tmp));
+	}
+
+	// Calculate the mean for each feature
+	int train_size = labels.size();
+	for(auto i = 0; i < train_size; i++) {
+		label_counts_[labels[i]] +=1;
+		table_of_features[labels[i]].push_back(data[i]);
+		for(auto j = 0; j < feature_size; j++) {
+			means_[labels[i]][j] += data[i][j];
 		}
 	}
 
+
+
+	// Calculate the variance
+	for(auto label: unique_labels_) {
+		for(auto j = 0; j < feature_size; j++) {
+			vector<double> diff_sq(4, 0.0);
+			for(auto row = 0; row < table_of_features[label].size(); row++) {
+				stds_[label][j] += pow(table_of_features[label][row][j] - means_[label][j], 2.0);
+				stds_[label][j] /= label_counts_[label];
+				stds_[label][j] = sqrt(stds_[label][j]);
+			}
+		}
+	}
+
+
+
+	cout << "Labels: " << endl;
+
+	for(auto label: unique_labels_) {
+
+		cout << label << " has samples: " << label_counts_[label] << endl;
+
+		cout << "Mean: ";
+		for(const auto &j: means_[label]) {
+			cout << j << ", ";
+		}
+		cout << endl;
+
+		cout << "Std: ";
+		for(const auto &k: stds_[label]) {
+			cout << k << ", ";
+		}
+
+		cout << endl;
+
+		cout << "Prob: ";
+		cout << p_label_[label] << endl;
+
+
+	}
+
 	
+
 }
 
 string GNB::predict(vector<double> sample)
@@ -70,6 +125,24 @@ string GNB::predict(vector<double> sample)
 		# TODO - complete this
 	*/
 
-	return this->possible_labels[1];
+	map<string, double> p;
+	double max = 0;
+	string result;
+
+	for(auto label: unique_labels_) {
+		p[label] = p_label_[label];
+		for(auto j = 0; j < sample.size(); j++) {
+			double norm = 1.0 / sqrt( 2 * M_1_PI * pow(stds_[label][j], 2));
+			double num = pow(sample[j] - means_[label][j], 2);
+			double denom = 2 * pow(stds_[label][j],2);
+			p[label] *= norm * exp(-num / denom);
+		}
+		if(max < p[label]){
+			max = p[label];
+			result = label;
+		}
+	}
+
+	return result;
 
 }
