@@ -51,7 +51,7 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
 		stds_.insert(std::pair<string, vector<double> >(label,tmp));
 	}
 
-	// Calculate the mean for each feature
+	// Collect data - class count , mean
 	int train_size = labels.size();
 	for(auto i = 0; i < train_size; i++) {
 		label_counts_[labels[i]] +=1;
@@ -61,7 +61,14 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
 		}
 	}
 
-
+	// Calculate the mean
+	for (auto label: unique_labels_) {
+		p_label_[label] = label_counts_[label] * 1.0 / labels.size(); // prob of label (or class)
+	
+		for (auto j = 0; j < feature_size; j++) {   // for each feature
+		  means_[label][j]  /= label_counts_[label];  // MEAN
+		}
+	}
 
 	// Calculate the variance
 	for(auto label: unique_labels_) {
@@ -69,9 +76,9 @@ void GNB::train(vector<vector<double>> data, vector<string> labels)
 			vector<double> diff_sq(4, 0.0);
 			for(auto row = 0; row < table_of_features[label].size(); row++) {
 				stds_[label][j] += pow(table_of_features[label][row][j] - means_[label][j], 2.0);
-				stds_[label][j] /= label_counts_[label];
-				stds_[label][j] = sqrt(stds_[label][j]);
 			}
+			stds_[label][j] /= label_counts_[label];
+			stds_[label][j] = sqrt(stds_[label][j]);
 		}
 	}
 
