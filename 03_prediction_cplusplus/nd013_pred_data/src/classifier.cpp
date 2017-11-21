@@ -4,6 +4,7 @@
 #include <math.h>
 #include <vector>
 #include <map>
+#include <algorithm>
 #include "classifier.h"
 
 using namespace std;
