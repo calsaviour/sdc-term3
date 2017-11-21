@@ -1,0 +1,45 @@
+html, body
+	{
+	margin: 0;
+	padding: 0;
+	}
+
+#map_canvas
+	{
+	height: 100%;
+	width: 50%;
+	float: left;
+	margin: 0;
+	padding: 0;
+	}
+
+#input_box
+	{
+	width: 50%;
+	float: right;
+	}
+
+#input_box .padded
+	{
+	margin: 30px;
+	}
+
+#output
+	{
+	font-family: Courier New, monospace;
+	margin-top: 20px;
+	font-size: 0.8em;
+	}
+
+#origin
+	{
+	color: #fff;
+	background-color: #800;
+	font-style: italic;
+	}
+
+table td
+	{
+	padding: 0;
+	margin: 0;
+	}

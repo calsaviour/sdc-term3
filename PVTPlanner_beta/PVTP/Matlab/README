@@ -1,0 +1,27 @@
+- Edit the set of obstacles and constraints in setup.m
+- At the matlab command line, type:
+
+    setup
+
+- This will put necessary paths and variables into memory.
+- To run the algorithm, type:
+
+    [G Goal] = testForward([0 0], [0 1], [0 10], TEST_OBSTACLES, TEST_MARGINS)
+
+- This performs forward propagation. To derive an optimal trajectory:
+
+    t = GetOptimalTrajectory(G, Goal, TEST_OBSTACLES, TEST_MARGINS)
+
+- To draw the obstacles, type:
+
+    drawObstacles(TEST_OBSTACLES, TEST_MARGINS)
+
+- Finally, to draw the optimal trajectory, type:
+    
+    drawTrajectory(t)
+
+- The script test_bounding_trajectories.m contains some basic tests for bounds
+finding, and the script test_uncertain_obstacles.m contains some basic tests
+for dealing with uncertain obstacles (a planning scenario currently under
+investigation). There are further test scripts in the algorithm/ directory.
+    

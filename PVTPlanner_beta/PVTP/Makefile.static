@@ -1,0 +1,66 @@
+include ../Makefile.config
+
+#SRCS= $(wildcard *.cpp)
+SRCDIR = src
+SRCS=$(shell ls $(SRCDIR)/*.cpp 2> /dev/null | sed -e 's/$(SRCDIR)\/\(.*\)\.cpp/\1.cpp/g')
+
+DEFINES=
+
+ifeq ($(BUILD_GSL), 1)
+	DEFINES:= $(DEFINES) BUILDGSL=1
+endif
+
+ifeq ($(BUILD_BOOST), 1)
+	DEFINES:= $(DEFINES) BUILDBOOST=1
+endif
+
+AR= ar
+RANLIB= ranlib
+
+CPPFLAGS= -O3 -g -Wall -Wno-unused-variable -fpermissive $(addprefix -I, $(INCDIR)) $(addprefix -D, $(DEFINES))
+
+OBJDIR= objs_$(BUILDNAME)
+DEPDIR= deps_$(BUILDNAME)
+vpath %.d $(DEPDIR)
+vpath %.o $(OBJDIR)
+
+LIBDIROUT= libs_$(BUILDNAME)
+
+OBJS= $(SRCS:.cpp=.o)
+OBJLIST = $(addprefix $(OBJDIR)/,$(OBJS))
+DEPENDS= $(addprefix $(DEPDIR)/,$(SRCS:.cpp=.d))
+
+#################### Start the action #########################
+default: lib
+	@echo Done.
+
+.PHONY: clean deps lib
+
+deps: $(DEPENDS)
+	;
+
+clean:
+	@echo $(addprefix $(OBJDIR)/,$(OBJS))
+	rm -f $(DEPDIR)/*.d $(OBJDIR)/*.o $(LIBDIROUT)/*.a; 
+	rmdir $(DEPDIR) $(OBJDIR) $(LIBDIROUT)
+
+-include $(DEPENDS)
+
+$(DEPDIR)/%.d: $(SRCDIR)/%.cpp
+	mkdir -p $(DEPDIR);
+	$(SHELL) -ec '$(CC) -MM $(CPPFLAGS) $< | sed "s/$*.o/& $*.d/g" > $@'
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp
+	mkdir -p $(OBJDIR);
+	$(CC) $(CPPFLAGS) -c $(SRCDIR)/$*.cpp -o $(OBJDIR)/$*.o
+
+lib: $(OBJLIST)
+	mkdir -p $(LIBDIROUT);
+	$(AR) rcs $(LIBDIROUT)/$(LIBNAME).a $(OBJLIST)
+	$(RANLIB) $(LIBDIROUT)/$(LIBNAME).a
+
+
+
+
+
+

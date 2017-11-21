@@ -1,0 +1,80 @@
+include ../Makefile.config
+
+# Common Variables...
+ECHO = @/bin/echo
+OBJDIR = obj
+
+# Specify compiler and compile options
+LDCC = g++
+
+JNI_FLAG=
+
+ifeq ($(BUILD_JNI), 1)
+	JNI_FLAG:= $(JNI_FLAG) -D BUILDJNI=1
+endif
+
+DEFINES=
+MORE_FLAGS=
+
+ifeq ($(BUILD_GSL), 1)
+	MORE_FLAGS:= $(MORE_FLAGS) -lgsl
+	DEFINES:= $(DEFINES) BUILDGSL=1
+endif
+
+ifeq ($(BUILD_BOOST), 1)
+	MORE_FLAGS:= $(MORE_FLAGS)
+	DEFINES:= $(DEFINES) BUILDBOOST=1
+endif
+
+# Create object files first and show all warnings
+CFLAGS = -fPIC -fpermissive -O3 -g -c -Wall -Wno-unused-variable $(addprefix -D, $(DEFINES))
+
+ifeq ($(UNAME), Darwin)
+	LN_COMMAND = -Fhfs
+	LDFLAGS = $(MORE_FLAGS) -dynamiclib -current_version $(LIBVER) -install_name $(LIB_INSTALL_PATH)/$(LIBFULLNAME)
+else
+	LN_COMMAND = -Ffs
+	LDFLAGS = $(MORE_FLAGS) -shared
+endif
+
+# Look for headers in the following dirs
+#  Please ln -s to your appropriate versions (of gtk, glib)
+CPOSTFLAGS = $(JNI_FLAG) $(addprefix -I, $(INCDIR))
+
+# Figure out which .o files should exist
+HEADERS=$(shell ls $(LOCALINC)/$(BUILDNAME)/*.hpp 2> /dev/null)
+SOURCES=$(shell ls $(SRCDIR)/*.cpp 2> /dev/null)
+OBJECTS=$(shell ls $(SRCDIR)/*.cpp 2> /dev/null | sed -e 's/$(SRCDIR)\(.*\)\.cpp/\$(OBJDIR)\1.o/g')
+LIBRARY=$(LIBFULLNAME)
+
+# Remove the default suffixes and define our own suffix list
+.SUFFIXES:
+.SUFFIXES: .cpp .c .o
+
+# Default target
+all: $(LIBRARY)
+
+# Link the binary using new object files
+$(LIBRARY): $(OBJECTS)
+	$(LDCC) $(LDFLAGS) $(OBJECTS) $(MAINO) -o $@
+
+# Create .o files for each .cpp file in $(SRCDIR) and move it to $(OBJDIR)
+$(OBJDIR)/%.o : $(SRCDIR)/%.cpp $(LOCALINC)/$(BUILDNAME)/%.hpp
+	mkdir -p $(OBJDIR);
+	$(CC) $(CFLAGS) $< $(CPOSTFLAGS) -o $@
+
+# Remove (RM = rm -f) all .o files and the executable
+clean:
+	$(ECHO) -n "Cleaning... "
+	@$(RM) $(LIBRARY)
+	rm -rf $(OBJDIR)
+	$(ECHO) Done.
+
+install: all
+	sudo rm -f $(LOCALINC)/$(BUILDNAME)/$(RAPIDXML)
+	sudo cp -PR $(LOCALINC)/$(BUILDNAME)/ $(LIB_INCLUDE_PATH)/$(BUILDNAME)-$(LIBVER)/
+	sudo ln -Ffs $(RAPIDXML)-$(RAPIDXMLVER) $(LOCALINC)/$(BUILDNAME)/$(RAPIDXML)
+	sudo ln $(LN_COMMAND) $(LIB_INCLUDE_PATH)/$(BUILDNAME)-$(LIBVER)/$(RAPIDXML)-$(RAPIDXMLVER)/ $(LIB_INCLUDE_PATH)/$(BUILDNAME)-$(LIBVER)/$(RAPIDXML)
+	sudo ln $(LN_COMMAND) $(LIB_INCLUDE_PATH)/$(BUILDNAME)-$(LIBVER)/ $(LIB_INCLUDE_PATH)/$(BUILDNAME)
+	sudo mv $(LIBRARY) $(LIB_INSTALL_PATH)/$(LIBRARY)
+	sudo ln -Ffs $(LIB_INSTALL_PATH)/$(LIBRARY) $(LIB_INSTALL_PATH)/$(LIBLINKNAME)

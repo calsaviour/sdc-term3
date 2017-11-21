@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html style="height:100%;">
+  <head>
+  	<title>Path Maker</title>
+  	<meta charset="UTF-8">
+  	<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <script type="text/javascript" src="scripts/jquery.js"></script>
+    <script type="text/javascript"
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFQodjgPDcelcS8Qgxj5IuSUDHyC3e9Xc&amp;sensor=false">
+    </script>
+    <script type="text/javascript" src="scripts/main.js"></script>
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+  </head>
+  <body onload="initialize()" style="height:100%;">
+    <div id="map_canvas" style="width:50%; height:100%;"></div>
+    <div id="input_box" style="height:100%;">
+    	<div class="padded" style="height:100%;">
+    		<form onsubmit="search(); return false;">
+    		<table>
+    		<tbody>
+    			<tr>
+    				<td>Lat:&nbsp;</td><td><input type="text" id="lat" size="20" value="39.165325"></td>
+    			</tr>
+    			<tr>
+    				<td>Long:&nbsp;</td><td><input type="text" id="long" size="20" value="-86.52638569999999"></td>
+    			</tr>
+    			<tr>
+    				<td colspan="2" style="text-align:center;">-or-</td>
+    			</tr>
+    			<tr>
+    				<td>Address:&nbsp;</td><td><input type="text" id="zip" size="75" value="Bloomington, IN"></td>
+    			</tr>
+    			<tr>
+    				<td colspan="2"><button type="submit" onclick="search();">Set map to location</button></td>
+    			</tr>
+    		</tbody>
+    		</table>
+    		</form>
+    		<br>
+    		Path name prefix:&nbsp;<input type="text" size="35" id="path_name" value="driver_path_">
+    		<br>
+    		<br>
+    		<button onclick="setOrigin();">Set Path Origin</button>&nbsp;:&nbsp;<span id="origin">&nbsp;not set&nbsp;</span>
+    		<br>
+    		<br>
+    		<button onclick="getPath();">Get Path</button>&nbsp;<button onclick="removePath();">Remove Path</button>
+    		<br>
+			<textarea rows="30" cols="80" id="output"></textarea>
+    	</div>
+    </div>
+  </body>
+</html>

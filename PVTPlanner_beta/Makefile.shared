@@ -1,0 +1,35 @@
+include Makefile.config
+
+PROJECT = PVTP
+
+CFLAGS  = -Wall -Wno-unused-variable -pedantic $(addprefix -I, $(BUILDNAME)/$(LOCALINC))
+MORE_FLAGS=
+
+ifeq ($(BUILD_GSL), 1)
+	CFLAGS:= $(CFLAGS) -DBUILDGSL=1 $(addprefix -I, $(GSLINC))
+	MORE_FLAGS:= $(MORE_FLAGS) -lgsl $(addprefix -L, $(GSLLIB))
+endif
+
+ifeq ($(BUILD_BOOST), 1)
+	CFLAGS:= $(CFLAGS) -DBUILDBOOST=1 $(addprefix -I, $(BOOSTINC))
+endif
+
+#all: $(PROJECT)
+
+deps:
+	cd PVTP; make; make install
+
+.cpp.o:
+	$(CC) -c $(CFLAGS) $<
+
+scratch: deps scratch.o $(LIB_INSTALL_PATH)/$(LIBLINKNAME)
+	$(CC) scratch.o $(MORE_FLAGS) -L. $(LIB_INSTALL_PATH)/$(LIBLINKNAME) -o scratch
+
+scenario_test: deps scenario_test.o $(LIB_INSTALL_PATH)/$(LIBLINKNAME)
+	$(CC) scenario_test.o $(MORE_FLAGS) -L. $(LIB_INSTALL_PATH)/$(LIBLINKNAME) -o scenario_test
+	
+clean:
+	cd PVTP; make clean
+	rm -f scratch.o scratch;
+	rm -f scenario_test.o scenario_test;
+

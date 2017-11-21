@@ -1,0 +1,257 @@
+2013-04-26:
+- Fixed bug in Planner::ConnectEdgeToEdge that sometimes failed to connect when it should
+
+2013-01-27:
+- Fixed bug in Planner::BuildGoalPLP
+- Reworked Planner::NextReachableSet, and edge-to-goal propagation routines
+- Removed some unused functions
+
+2013-01-26:
+- Inlined many of the comparison functions in Maths
+- Fixed Maths::approxEq comparison to deal with negatives correctly
+- Fixed bug in PVT_Obstacle constructor
+
+2013-01-13:
+- PT Obstacle construction now projects obstacles into planning space
+- Trajectories are no longer sanitized by collision checking
+- Minor changes to API (mostly addition of `const' qualifier to some parameters)
+- Added method for returning exceptions as strings
+
+2013-01-08:
+- Planner::GetCollisionBoundary is now more granular
+- Fixed rare bug in propagation logic
+
+2013-01-07:
+- Removed Planner:FindInitialVelocityRange function; no longer used
+
+2013-01-03:
+- Fixed redundant vertices check to properly account for vertical lines
+- Added capability to translate paths
+- Matlab object printed for visualization now default to not having a legend
+
+2013-01-03:
+- Fixed ugly bug in Planner:FindInitialVelocityRange and
+- Fixed bad return type in Maths::parabolaT_TangentFromV1_X2_T2_A for error conditions
+
+2013-01-01:
+- Allowed Utilities::PlayScenario to specify separate simulation and recording time steps
+- Added util functions to matlab code for printing figures to image/eps files
+- Happy New Year
+
+2012-12-31:
+- Fixed regression in Obstacles::ForwardObstacleSimulator that was overly conservative in PT obstacle construction
+- Fixed bug in VehicleModelUncertain::getSweptRegion that was incorrectly computing swept regions in certain cases
+
+2012-12-29:
+- Fixed regression in Obstacles::ForwardObstacleSimulator that was incrementing time incorrectly
+
+2012-12-25:
+- Added #define to Maths.hpp for 2pi
+- Fixed instability in Planner::BuildOptimalTrajectory that prevented full trajectories from being found
+- Fixed bug in Planner::Channel that was incorrectly classifying trajectories under certain conditions
+- Fixed bug in PVT_Obstacle constructor that was incorrectly defining reachable velocity intervals at vertices
+- Fixed bug in Obstacles::ComputePointsOfIntersection that allowed zero measure PT obstacles
+- Fixed bug in Planner::PropagateGoal that allowed indexing into empty trajectories under certain circumstances
+- Fixed numeric instability in PathModel::getPositionVectorAtArcLength
+- Fixed bug in swept region computation that didn't follow geodesics in orientation when computing sweep at path segment junctions 
+- Swept region computation now works for sweeps of greater than 90 degrees
+- Merry Christmas
+
+2012-12-24:
+- Fixed bug in Makefiles that was incorrectly setting BUILDBOOST flag during compliation
+- Added ability to simulate uncertain vehicle models
+- Socket client/server and XML I/O have been removed; they will need to be redone to be compatible with the new planner
+
+2012-12-23:
+- Added additional test case to collision checker to ignore useless collision checks
+- Added ability to smooth hull of computed obstacles to speed up planning
+
+2012-12-22:
+- Fixed bug in Controller::addControl that wasn't properly replacing existing controls
+- Fixed bug in VehicleModel::setAcceleration that was setting the wrong value
+
+2012-12-21:
+- Updated Interval::getMidpoint function to be more robust
+- Updated Planner::BuildOptimalTrajectory function to be more robust
+- Fixed bug in Utilities::PlayScenario that tried to analyze empty trajectories
+
+2012-12-17:
+- Fixed numerical issue in Planner::BuildOptimalTrajectory that caused it to fail in certain cases
+- Fixed errors in some of the inlined Maths functions
+
+2012-12-16:
+- Converting many heap allocated object members to be stack allocated (ongoing)
+- Fixed bug in Planner::ConnectPointToEdge that wasn't correctly validating velocity of linear segments
+
+2012-12-13:
+- Bug fixes in Planner::FindInitialVelocityRange and Planner::BuildGoalPLP that prevented feasible trajectories from being found and build invalid trajectories, respectively
+- Added Utilities::ValidTrajectory method for verifying the integrity of a trajectory
+- PathSegments can now be constructed soley from start and end points
+- Added web interface for generating paths using Google maps
+- VehicleModel now includes a Controller object so that vehicles can now follow arbitrary sequences of controls
+
+2012-12-12:
+- Polygonal obstacle construction is now done conservatively by computing a bounding polygon to the swept region between time steps
+
+2012-11-14:
+- Added exception handlers for PVT obstacle construction
+- Redundant vertices are now removed from PVT obstacles during construction
+
+2012-10-31:
+- Added Maths functions for using Horner's method for evaluating polynomials
+- Bug fixes in Planner::GetCollisionBoundary and Planner::ConnectPointToEdge
+- Gave final epsilon parameter in Maths functions a default value so that the functions can be used with explicit epsilon specification
+- Factored some calculations to reduce the number of multiplications done
+- Happy Halloween
+
+2012-10-30:
+- Completely rewritten channel classifier to fix issues with non-rectangular obstacles
+
+2012-10-26:
+- Completely redone BuildOptimalTrajectory; now much much simpler
+
+2012-10-25:
+- Significant bug fixes in UpperBoundingStates/LowerBoundingStates
+
+2012-10-20:
+- Added Utilities methods for generate matlab code to visualize scenes
+- Added several Maths and Planner functions for doing point-to-edge, edge-to-edge, and edge-to-point propagations
+- Initial version of Planner::GetCollisionBoundary functional
+
+2012-10-19:
+- Now properly considers velocity constraints due to obstacle edges at vertices
+- Fixed collision checker to properly return the edge of first intersection in time
+
+2012-10-15:
+- Re-introduced hard failure to Planner::*BoundingStates procedures
+
+2012-10-14:
+- Collision checker now optionally returns the first collision edge found
+
+2012-10-11:
+- Fixed bug in Planner::BuildGoalPLP that incorrectly built certain goal trajectories
+
+2012-10-10:
+- Fixed bug in Planner::BuildGoalPLP that didn't correctly compute feasible initial velocities from the starting vertex
+
+2012-10-09:
+- Inlined many of the simple Maths functions
+
+2012-10-06:
+- Re-tightened value of epsilon; previous instability was due to improper handling of comparisons in some Maths functions
+
+2012-10-05:
+- Polygonal collision checking now functional
+- Changed some comparisons in the Maths functions to use Maths::approxEq instead of ==
+
+2012-10-04:
+- Added Utilities method for translating trajectories in path-time plane
+
+2012-10-03:
+- Added `const' keywords to methods and functions where relevant
+
+2012-10-02:
+- Fixed Interval object method for intersection to test itself for emptiness
+- Removed unused function Maths::motionX_V1_V2_T1_T2
+
+2012-09-29: v0.1.3
+- Fixed bug in utility method for computing displacement across trajectory
+
+2012-09-25: v0.1.2
+- Fixed erroneous output in PVT_ObstacleSet::inCollision
+- Modified constants to be `const' so that they can be used in switch statements
+
+2012-09-24:
+- Adjusted epsilon; previous value of 1.5e10^-10 was a bit too strick and lead to numerical instability
+
+2012-09-10: v0.1.1
+- Fixed bug that was incorrectly ignoring return_obstacles parameter during collision checking
+- Also tagging this release; forgot to do so with v0.1.0
+
+2012-09-09: v0.1.0
+- Changed container that the collision checker uses to return obstacle from std::vector<T> to std::set<T>
+- Since the planner's collision check isn't concerned with which obstacles are in collision, the routines now defualt to just returning the first colliding obstacle instead of the entire set
+- UpperBoundingStates and LowerBoundingStates no longer fail if an unexpected case is encountered; since these are almost always due to numeric inaccuracies, the procedures now fail quietly with more verbose output
+- Because there are API changes, updating minor version number
+
+2012-09-06:
+- Added ScenarioGenerator for use in randomly generating sets of scenario
+- Added various convenience methods to many classes
+- Cleaned comments a bit
+- Added DTD for scenario XML files
+
+2012-08-11:
+- Fixed bug in ScenarioReader that was not initializing the value for obstacle vehicle acceleration
+
+2012-06-02:
+- Fixed minor bug in ScenarioReader that allowed invalid specification of final velocity constraints
+
+2012-05-27: v0.0.4
+- Can now be built as shared library on Ubuntu Linux 12.04
+
+2012-05-27: v0.0.3
+- Added Matlab method for testing propagate goal function
+- Added BSD New license
+- Fixed version numbers that were off
+
+2012-05-13: v0.0.2
+- Updated version number in Makefile.config
+
+2012-05-11:
+- Disabled debugging option that was left on mistakenly that was returning overly conservative trajectories
+
+2012-05-08: v0.0.1
+- Fixed rare bug in both C++ and Matlab implementation that allowed intermediate velocities in representative trajectories to exceed constraints
+
+2012-03-10:
+- Fixed a few minor bugs
+
+2012-02-07: v0.0.0
+- Minor code and comment updates
+
+2012-01-14:
+- Fixed memory leak in Controller object
+- Made minor adjustments to scenario_test code
+- Added output overrides to many objects to make debugging easier
+- Initial implementation of I/O for scenarios complete, added scenario_test_xml and data/sample_scenario_configuration.xml as examples
+
+2012-01-12:
+- Fixed ambiguity in makefile regarding symlinks that was resulting in redundant copies when building shared library
+- Updated SCIMP videos to fix issues with framerate
+- Added RapidXML library for doing XML I/O
+- Begun implementation of I/O for scenarios
+- Re-organized some of the top-level files and directories 
+
+2012-01-02:
+- Added case for certain lower-bounding cases
+- Added a few convenience methods in Matlab implementation
+
+2011-12-26:
+- Simplified some expressions in Maths namespace to reduce floating-point error
+- Changed Planner::BuildOptimalTrajectory to cycle through all goal reachable trajectories instead of only trying the fastest one; this prevents instances where numerical errors were preventing a trajectory from being found
+- Changed collision checking routines to use epsilon comparisons
+- Rewrote some SCIMP_Scenario API functions
+- Fixed error in copy constructor for Constraints object that changed the value of epsilon by machine epsilon
+
+2011-12-22:
+- Fixed a few minor bugs in trajectory building functions
+- Found a significant bug in optimal trajectory construction that allowed optimal trajectories to contain collisions. I've prevented that from occurring.
+
+2011-12-21:
+- Fixed a regression in GoalConnect
+- Fixed inconsistency in ordering of roots that Maths::quadraticOrdered returns
+- Rewrote BuildGoalPLP
+- Added some shortcut checks to Planner::FindInitialVelocityRange
+- Changed behaviour of SCIMP_Controller::filterUserControl to return controls that more accurately reflect optimal trajectories. Previously the method naively returned bang-bang controls, as that's the nature of trajectories generated by the planner. The filter now returns the effective acceleration of the trajectory at the end of one time step.
+
+2011-12-19:
+- Updated GoalConnect algorithm; is much more robust now
+
+2011-12-17:
+- Updated README and Doxygen docs with info about error messages
+
+2011-12-13:
+- Updated make process so that JNI support is configurable via switch
+- Added visualization for scenario_test
+- Fixed a couple bugs in the planner where the wrong root of the quadratic was being used
+

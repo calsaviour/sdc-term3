@@ -1,0 +1,46 @@
+===ABOUT===
+This contains implementations of the PVTPlanner algorithm in C++ (as a library), as described in the papers:
+
+Optimal Longitudinal Control Planning with Moving Obstacles
+Jeff Johnson, Kris Hauser, IV 2013
+
+Optimal Acceleration-Bounded Trajectory Planning in Dynamic Environments Along a Specified Path 
+Jeff Johnson, Kris Hauser, ICRA 2012
+
+The general idea of the planner is to compute a control sequence (acceleration and braking) such that the robot can follow a fixed path without colliding with obstacles that are crossing that path. To do this, the planner takes as input the set of constraints and path-time obstacles, then builds the set of reachable velocities through the obstacles. Using the reachable velocities, it constructs the time-optimal trajectory, and returns that trajectory as a set of states.
+
+In addition to planning, there are also routines for constructing the path-time obstacles. Currently the obstacles are specified using code, but I'm working on creating an XML format for defining planning scenarios.
+
+===REQUIREMENTS===
+The planner itself has no external dependencies, but the obstacle construction routines require Boost, which is readily available for most platforms. It will eventually use RapidXML for XML I/O, but that software is included. I've built and run it on RedHat Linux, Windows XP and Windows 7 (both under Cygwin), and Mac OS X. There's nothing really platform dependent about what it does, so build problems should be minimal.
+
+===BUILDING AND RUNNING===
+First, to build the library and Scenario API run:
+
+	make
+
+There is also a file that exhibits the use of the API to directly construct scenarios:
+
+	make scenario_test
+
+You should be able to then run the executables produced, and should see a display of the obstacles, paths, and optimal trajectories.
+
+in the `pathmaker' directory is a quick web app for defining paths using Google maps. To use it, click somewhere on the map to set a path origin, then set waypoints for the path by clicking on the map. The obstacle construction routines assume the paths don't get too crazy (for instance, that they don't cross back on themselves). These paths also don't consider local topology. Obviously, they are for demonstration purposes only. The paths in scenario_test.cpp were built using the app.
+
+A visualization of the scenario in the test file is in media/scenario_test.mp4.
+
+===BUILDING AS A SHARED LIBRARY===
+
+By defualt, the PVTPlanner library is built as a static library. It can be built as a shared library; however, I've only tested this on Mac OS X. It shouldn't be hard to build as a shared library on other platforms, and this capability will be added in the near future.
+
+===DOCUMENTATION===
+To build documentation of the planning library, cd into PVTP and run:
+
+doxygen doxygen_config
+
+(Of course, this requires doxygen). I've tried to document the code fairly well. For more information about the API, and an example of usage, see scenario_test.cpp.
+
+There is also a README file in PVTP/Matlab that describes the Matlab code. The Matlab code is probably easier to read, but it's quite outdated. I mostly just use it for visualization anymore.
+
+This is research code, so there are bound to be bugs or problems. If you encounter any or have questions about functionality, please drop me an e-mail: jj56@indiana.edu
+

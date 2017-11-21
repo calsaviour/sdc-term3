@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/sample_scenario_configuration.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE scenario SYSTEM "sample_scenario_configuration.dtd">
+
+    <scenario>
+    ...
+    </scenario>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT scenario (vehicles)*>
+<!ATTLIST scenario
+    alpha CDATA #IMPLIED
+    defaultTimeStep CDATA #IMPLIED
+    maxFinalVelocity CDATA #IMPLIED
+    minFinalVelocity CDATA #IMPLIED
+    timeLimit CDATA #IMPLIED
+    timeUnits CDATA #IMPLIED
+    distanceUnits CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT vehicles (simulator|user)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT user (vehicle)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT vehicle (path)*>
+<!ATTLIST vehicle
+    direction CDATA #IMPLIED
+    acceleration CDATA #IMPLIED
+    maxAcceleration CDATA #IMPLIED
+    minAcceleration CDATA #IMPLIED
+    maxVelocity CDATA #IMPLIED
+    minVelocity CDATA #IMPLIED
+    width CDATA #IMPLIED
+    velocity CDATA #IMPLIED
+    length CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT path EMPTY>
+<!ATTLIST path
+    endY CDATA #IMPLIED
+    startY CDATA #IMPLIED
+    endX CDATA #IMPLIED
+    startX CDATA #IMPLIED
+    type CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT simulator (vehicle)*>

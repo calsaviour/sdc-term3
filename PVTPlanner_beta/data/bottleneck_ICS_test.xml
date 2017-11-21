@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+
+<!--
+	This file is an example configuration file containing all tags and all tag
+	attributes that may be specified
+-->
+
+<!-- The 'scenario' tag is the root tag, and it specifies certains constraints on the scenario -->
+<scenario distanceUnits="meters" timeUnits="seconds" timeLimit="10.0" minFinalVelocity="0.0" maxFinalVelocity="5.0" defaultTimeStep="0.05" alpha="0.999">
+	
+	<!-- All vehicles in a given scenario are grouped under the 'vehicles' tag -->
+	<vehicles>
+		
+		<!-- The user-controlled vehicle lives in the 'user' tag; there should be only one vehicle here, others will be ignored -->
+		<user>
+			
+			<!-- The first 'vehicle' tag within the 'user' tag specifies the user-controlled vehicle -->
+			<vehicle length="5.5" velocity="10.0" width="3.5" minVelocity="0.0" maxVelocity="50.0" minAcceleration="-10.0" maxAcceleration="8.0">
+				
+				<!-- The first 'path' tag within the 'vehicle' tag specifies the path that this particular vehicle follows -->
+				<path type="linear" startX="0.0" endX="30.0" startY="0.0" endY="0.0"/>
+				
+			</vehicle>
+			
+		</user>
+		
+		<!-- All simulator controlled vehicles live in the 'simulator' tag; there can be arbitrarily many vehicles here -->
+		<simulator>
+			
+			<!-- Each simulator-controlled vehicle is specified with a 'vehicle' tag -->
+			<vehicle acceleration="0.0" direction="forward" length="5.5" velocity="5.0" width="3.5" minVelocity="0.0" maxVelocity="50.0" minAcceleration="-10.0" maxAcceleration="8.0">
+				<path type="linear" startX="16.0" endX="16.0" startY="11.5" endY="-15.0"/>
+			</vehicle>
+			
+			<vehicle acceleration="0.0" direction="forward" length="5.5" velocity="5.0" width="3.5" minVelocity="0.0" maxVelocity="50.0" minAcceleration="-10.0" maxAcceleration="8.0">
+				<path type="linear" startX="16.0" endX="16.0" startY="5.5" endY="-15.0"/>
+			</vehicle>
+			
+		</simulator>
+		
+	</vehicles>
+	
+</scenario>
